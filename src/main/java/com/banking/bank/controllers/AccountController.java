@@ -1,10 +1,10 @@
-package com.banking.bank.controller;
+package com.banking.bank.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.banking.bank.entities.Account;
-import com.banking.bank.service.AccountService;
+import com.banking.bank.services.AccountService;
 
 import java.util.Map;
 
@@ -15,11 +15,12 @@ public class AccountController {
     @Autowired
     private AccountService accountService;
 
+    // Create account
     @PostMapping
     public Account createAccount(@RequestBody Account account) {
         return accountService.createAccount(account);
     }
-
+    
     @GetMapping("/{id}")
     public Account getAccount(@PathVariable Long id) {
         return accountService.getAccount(id).orElseThrow(() -> new RuntimeException("Account not found"));

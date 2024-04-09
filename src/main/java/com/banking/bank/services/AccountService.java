@@ -1,4 +1,4 @@
-package com.banking.bank.service;
+package com.banking.bank.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
