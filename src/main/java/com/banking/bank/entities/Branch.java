@@ -15,14 +15,14 @@ public class Branch {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    public Long id;
 
-    private String name;
-    private String address;
+    public String name;
+    public String address;
 
     @JsonIgnore
     @OneToMany(mappedBy = "branch", cascade = CascadeType.ALL)
-    private List<BankEmployee> employees = new ArrayList<>();
+    public List<BankEmployee> employees = new ArrayList<>();
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)

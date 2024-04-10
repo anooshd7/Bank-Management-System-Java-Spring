@@ -16,14 +16,14 @@ public class Bank {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    public Long id;
 
-    private String bankName;
-    private String location;
+    public String bankName;
+    public String location;
 
     @JsonIgnore
     @OneToMany(mappedBy = "bank", cascade = CascadeType.ALL)
-    private List<Branch> branches = new ArrayList<>();
+    public List<Branch> branches = new ArrayList<>();
 
     public int getNumberOfBranches() {
         return branches != null ? branches.size() : 0;
