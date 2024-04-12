@@ -45,7 +45,7 @@ Account Management:
 
 ## Class Diagram
 
-![Class Diagram](ClassDiagram.png)
+![Class Diagram](ClassDiagram.jpeg)
 
 ## UML Diagram
 
