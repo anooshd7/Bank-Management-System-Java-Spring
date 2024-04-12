@@ -1,57 +1,93 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Account Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1 class="font-bold text-2xl">Account Management</h1>
-    
-    <h2>Create Account</h2>
-    <form id="createAccountForm">
-        <label for="accountHolderName">Account Holder Name:</label>
-        <input type="text" id="accountHolderName" name="accountHolderName" required>
-        <br>
-        <label for="balance">Initial Balance:</label>
-        <input type="number" id="balance" name="balance" required>
-        <br>
-        <button type="submit">Create Account</button>
-    </form>
-    
-    <h2>Deposit</h2>
-    <form id="depositForm">
-        <label for="depositId">Account ID:</label>
-        <input type="number" id="depositId" name="depositId" required>
-        <br>
-        <label for="depositAmount">Amount:</label>
-        <input type="number" id="depositAmount" name="depositAmount" required>
-        <br>
-        <button type="submit">Deposit</button>
-    </form>
-    
-    <h2>Withdraw</h2>
-    <form id="withdrawForm">
-        <label for="withdrawId">Account ID:</label>
-        <input type="number" id="withdrawId" name="withdrawId" required>
-        <br>
-        <label for="withdrawAmount">Amount:</label>
-        <input type="number" id="withdrawAmount" name="withdrawAmount" required>
-        <br>
-        <button type="submit">Withdraw</button>
-    </form>
 
-    <h2>Check Balance</h2>
-    <form id="getAccountForm">
-        <label for="accountId">Account ID:</label>
-        <input type="number" id="accountId" name="accountId" required>
-        <br>
-        <button type="submit">Check Balance</button>
-    </form>
-    
+<body class="flex flex-col w-full h-full justify-center text-center items-center">
+    <div class="font-bold text-2xl mb-8">Account Management</div>
+
+
+    <div class="flex flex-col w-fit text-center items-center justify-center">
+        <div class="font-semibold text-xl">Create Account</div>
+        <form id="createAccountForm"
+            class="gap-2 flex flex-col justify-center items-center text-center mb-4 border-black p-2">
+            <div class="flex gap-2">
+                <label for="accountHolderName">Account Holder Name:</label>
+                <input type="text" id="accountHolderName" name="accountHolderName" required
+                    class="border-2 border-black rounded-md">
+            </div>
+            <div class="flex gap-2">
+                <label for="balance">Initial Balance:</label>
+                <input type="number" id="balance" name="balance" required class="border-2 border-black rounded-md">
+            </div>
+            <button type="submit" class="bg-blue-500 p-2 rounded-md w-fit">Create Account</button>
+        </form>
+    </div>
+
+    <div class="border-2 border-black w-screen">
+    </div>
+
+    <div class="flex flex-col w-fit text-center items-center justify-center">
+        <div class="font-semibold text-xl">Deposit</div>
+        <form id="depositForm"
+            class="gap-2 flex flex-col justify-center items-center text-center mb-4 border-black p-2">
+            <div class="flex gap-2">
+                <label for="depositId">Account ID:</label>
+                <input type="number" id="depositId" name="depositId" required class="border-2 border-black rounded-md">
+            </div>
+            <div class="flex gap-2">
+                <label for="depositAmount">Amount:</label>
+                <input type="number" id="depositAmount" name="depositAmount" required
+                    class="border-2 border-black rounded-md">
+            </div>
+            <button type="submit" class="bg-blue-500 py-2 px-4 rounded-md w-fit">Deposit</button>
+        </form>
+    </div>
+
+    <div class="border-2 border-black w-screen">
+    </div>
+
+    <div class="flex flex-col w-fit text-center items-center justify-center">
+        <div class="font-semibold text-xl">Withdraw</div>
+        <form id="withdrawForm"
+            class="gap-2 flex flex-col justify-center items-center text-center mb-4 border-black p-2">
+            <div class="flex gap-2">
+                <label for="withdrawId">Account ID:</label>
+                <input type="number" id="withdrawId" name="withdrawId" required
+                    class="border-2 border-black rounded-md">
+            </div>
+            <div class="flex gap-2">
+                <label for="withdrawAmount">Amount:</label>
+                <input type="number" id="withdrawAmount" name="withdrawAmount" required
+                    class="border-2 border-black rounded-md">
+            </div>
+            <button type="submit" class="bg-blue-500 py-2 px-4 rounded-md w-fit">Withdraw</button>
+        </form>
+    </div>
+
+    <div class="border-2 border-black w-screen">
+    </div>
+
+    <div class="flex flex-col w-fit text-center items-center justify-center">
+        <div class="font-semibold text-xl">Check Balance</div>
+        <form id="getAccountForm"
+            class="gap-2 flex flex-col justify-center items-center text-center mb-4 border-black p-2">
+            <div class="flex gap-2">
+                <label for="accountId">Account ID:</label>
+                <input type="number" id="accountId" name="accountId" required class="border-2 border-black rounded-md">
+            </div>
+            <button type="submit" class="bg-blue-500 py-2 px-4 rounded-md w-fit">Check Balance</button>
+        </form>
+    </div>
+
     <div id="accountDetails"></div>
 
     <script>
         // AJAX request to create an account
-        document.getElementById("createAccountForm").addEventListener("submit", function(event) {
+        document.getElementById("createAccountForm").addEventListener("submit", function (event) {
             event.preventDefault();
             let formData = new FormData(this);
             fetch("/api/accounts", {
@@ -64,18 +100,18 @@
                     "Content-Type": "application/json"
                 }
             })
-            .then(response => response.json())
-            .then(data => {
-                alert("Account created successfully with ID: " + data.id);
-                this.reset();
-            })
-            .catch(error => {
-                alert("Failed to create account: " + error.message);
-            });
+                .then(response => response.json())
+                .then(data => {
+                    alert("Account created successfully with ID: " + data.id);
+                    this.reset();
+                })
+                .catch(error => {
+                    alert("Failed to create account: " + error.message);
+                });
         });
 
         // AJAX request to deposit into an account
-        document.getElementById("depositForm").addEventListener("submit", function(event) {
+        document.getElementById("depositForm").addEventListener("submit", function (event) {
             event.preventDefault();
             let formData = new FormData(this);
             let accountId = formData.get("depositId");
@@ -87,18 +123,18 @@
                     "Content-Type": "application/json"
                 }
             })
-            .then(response => response.json())
-            .then(data => {
-                alert("Deposited successfully. New balance: " + data.balance);
-                this.reset();
-            })
-            .catch(error => {
-                alert("Failed to deposit: " + error.message);
-            });
+                .then(response => response.json())
+                .then(data => {
+                    alert("Deposited successfully. New balance: " + data.balance);
+                    this.reset();
+                })
+                .catch(error => {
+                    alert("Failed to deposit: " + error.message);
+                });
         });
 
         // AJAX request to withdraw from an account
-        document.getElementById("withdrawForm").addEventListener("submit", function(event) {
+        document.getElementById("withdrawForm").addEventListener("submit", function (event) {
             event.preventDefault();
             let formData = new FormData(this);
             let accountId = formData.get("withdrawId");
@@ -110,36 +146,35 @@
                     "Content-Type": "application/json"
                 }
             })
-            .then(response => response.json())
-            .then(data => {
-                alert("Withdrawn successfully. New balance: " + data.balance);
-                this.reset();
-            })
-            .catch(error => {
-                alert("Failed to withdraw: " + error.message);
-            });
+                .then(response => response.json())
+                .then(data => {
+                    alert("Withdrawn successfully. New balance: " + data.balance);
+                    this.reset();
+                })
+                .catch(error => {
+                    alert("Failed to withdraw: " + error.message);
+                });
         });
 
         // AJAX request to get account details by ID
-        document.getElementById("getAccountForm").addEventListener("submit", function(event) {
+        document.getElementById("getAccountForm").addEventListener("submit", function (event) {
             event.preventDefault();
             let accountId = document.getElementById("accountId").value;
             fetch("/api/accounts/" + accountId)
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById("accountDetails").innerHTML = `
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("accountDetails").innerHTML = `
                     <h3>Account Details</h3>
                     <p>ID: ${data.id}</p>
                     <p>Account Holder Name: ${data.accountHolderName}</p>
                     <p>Balance: ${data.balance}</p>
                 `;
-            })
-            .catch(error => {
-                alert("Failed to fetch account details: " + error.message);
-            });
+                })
+                .catch(error => {
+                    alert("Failed to fetch account details: " + error.message);
+                });
         });
     </script>
-    <!-- <script src="https://cdn.tailwindcss.com">
-    </script> -->
 </body>
+
 </html>
