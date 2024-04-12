@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ATM Operator Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="flex flex-col w-full h-full justify-center text-center items-center">
+    <div class="font-bold text-2xl mb-8">ATM Operator Management</div>
+
+    <div class="flex flex-col w-fit text-center items-center justify-center">
+        <div class="font-semibold text-xl">Create ATM Operator</div>
+        <form id="createATMOperatorForm"
+            class="gap-2 flex flex-col justify-center items-center text-center mb-4 border-black p-2">
+            <div class="flex gap-2">
+                <label for="inputDeposit">Input Deposit:</label>
+                <input type="number" id="inputDeposit" name="inputDeposit" required
+                    class="border-2 border-black rounded-md">
+            </div>
+            <div class="flex gap-2">
+                <label for="interval">Interval:</label>
+                <input type="number" id="interval" name="interval" required class="border-2 border-black rounded-md">
+            </div>
+            <button type="submit" class="bg-blue-500 p-2 rounded-md w-fit">Create ATM Operator</button>
+        </form>
+    </div>
+
+    <div class="border-2 border-black w-screen"></div>
+
+    <div class="flex flex-col w-fit text-center items-center justify-center">
+        <div class="font-semibold text-xl">Deposit</div>
+        <form id="depositForm"
+            class="gap-2 flex flex-col justify-center items-center text-center mb-4 border-black p-2">
+            <div class="flex gap-2">
+                <label for="atmOperatorId">ATM Operator ID:</label>
+                <input type="number" id="atmOperatorId" name="atmOperatorId" required
+                    class="border-2 border-black rounded-md">
+            </div>
+            <div class="flex gap-2">
+                <label for="depositAmount">Amount:</label>
+                <input type="number" id="depositAmount" name="depositAmount" required
+                    class="border-2 border-black rounded-md">
+            </div>
+            <button type="submit" class="bg-blue-500 py-2 px-4 rounded-md w-fit">Deposit</button>
+        </form>
+    </div>
+
+    <div class="border-2 border-black w-screen"></div>
+
+    <div class="flex flex-col w-fit text-center items-center justify-center">
+        <div class="font-semibold text-xl">Maintenance Record</div>
+        <form id="maintenanceRecordForm"
+            class="gap-2 flex flex-col justify-center items-center text-center mb-4 border-black p-2">
+            <div class="flex gap-2">
+                <label for="atmOperatorIdForMaintenance">ATM Operator ID:</label>
+                <input type="number" id="atmOperatorIdForMaintenance" name="atmOperatorIdForMaintenance" required
+                    class="border-2 border-black rounded-md">
+            </div>
+            <button type="submit" class="bg-blue-500 py-2 px-4 rounded-md w-fit">Perform Maintenance Record</button>
+        </form>
+    </div>
+
+    <div class="border-2 border-black w-screen"></div>
+
+    <div class="flex flex-col w-fit text-center items-center justify-center">
+        <div class="font-semibold text-xl">Check Machine</div>
+        <form id="checkMachineForm"
+            class="gap-2 flex flex-col justify-center items-center text-center mb-4 border-black p-2">
+            <div class="flex gap-2">
+                <label for="atmOperatorIdForMachineCheck">ATM Operator ID:</label>
+                <input type="number" id="atmOperatorIdForMachineCheck" name="atmOperatorIdForMachineCheck" required
+                    class="border-2 border-black rounded-md">
+            </div>
+            <button type="submit" class="bg-blue-500 py-2 px-4 rounded-md w-fit">Check Machine</button>
+        </form>
+    </div>
+
+    <div class="border-2 border-black w-screen"></div>
+
+    <div class="flex flex-col w-fit text-center items-center justify-center">
+        <div class="font-semibold text-xl">Service Check</div>
+        <form id="serviceCheckForm"
+            class="gap-2 flex flex-col justify-center items-center text-center mb-4 border-black p-2">
+            <div class="flex gap-2">
+                <label for="atmOperatorIdForServiceCheck">ATM Operator ID:</label>
+                <input type="number" id="atmOperatorIdForServiceCheck" name="atmOperatorIdForServiceCheck" required
+                    class="border-2 border-black rounded-md">
+            </div>
+            <button type="submit" class="bg-blue-500 py-2 px-4 rounded-md w-fit">Perform Service Check</button>
+        </form>
+    </div>
+
+    <div class="border-2 border-black w-screen"></div>
+
+    <div class="flex flex-col w-fit text-center items-center justify-center">
+        <div class="font-semibold text-xl">Diagnostic Check</div>
+        <form id="diagnosticCheckForm"
+            class="gap-2 flex flex-col justify-center items-center text-center mb-4 border-black p-2">
+            <div class="flex gap-2">
+                <label for="atmOperatorIdForDiagnosticCheck">ATM Operator ID:</label>
+                <input type="number" id="atmOperatorIdForDiagnosticCheck" name="atmOperatorIdForDiagnosticCheck" required
+                    class="border-2 border-black rounded-md">
+            </div>
+            <button type="submit" class="bg-blue-500 py-2 px-4 rounded-md w-fit">Perform Diagnostic Check</button>
+        </form>
+    </div>
+
+    <div id="atmOperatorDetails"></div>
+
+    <script>
+        // AJAX request to create an ATM Operator
+        document.getElementById("createATMOperatorForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            let formData = new FormData(this);
+            fetch("/api/atm-operators", {
+                method: "POST",
+                body: JSON.stringify({
+                    inputDeposit: formData.get("inputDeposit"),
+                    interval: formData.get("interval")
+                }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert("ATM Operator created successfully with ID: " + data.id);
+                    this.reset();
+                })
+                .catch(error => {
+                    alert("Failed to create ATM Operator: " + error.message);
+                });
+        });
+
+        // AJAX request to deposit into an ATM Operator
+        document.getElementById("depositForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            let formData = new FormData(this);
+            let atmOperatorId = formData.get("atmOperatorId");
+            let amount = formData.get("depositAmount");
+            fetch("/api/atm-operators/" + atmOperatorId + "/deposit", {
+                method: "POST",
+                body: JSON.stringify({ amount: amount }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert("Deposited successfully. New deposit: " + data.deposit);
+                    this.reset();
+                })
+                .catch(error => {
+                    alert("Failed to deposit: " + error.message);
+                });
+        });
+
+        // AJAX request to perform maintenance record for an ATM Operator
+        document.getElementById("maintenanceRecordForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            let atmOperatorId = document.getElementById("atmOperatorIdForMaintenance").value;
+            fetch("/api/atm-operators/" + atmOperatorId + "/maintenance-record", {
+                method: "POST"
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert("Maintenance record performed successfully.");
+                    this.reset();
+                })
+                .catch(error => {
+                    alert("Failed to perform maintenance record: " + error.message);
+                });
+        });
+
+        // AJAX request to check the machine for an ATM Operator
+        document.getElementById("checkMachineForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            let atmOperatorId = document.getElementById("atmOperatorIdForMachineCheck").value;
+            fetch("/api/atm-operators/" + atmOperatorId + "/check-machine", {
+                method: "POST"
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert("Machine check performed successfully.");
+                    this.reset();
+                })
+                .catch(error => {
+                    alert("Failed to check the machine: " + error.message);
+                });
+        });
+
+        // AJAX request to perform service check for an ATM Operator
+        document.getElementById("serviceCheckForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            let atmOperatorId = document.getElementById("atmOperatorIdForServiceCheck").value;
+            fetch("/api/atm-operators/" + atmOperatorId + "/service-check", {
+                method: "POST"
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert("Service check performed successfully.");
+                    this.reset();
+                })
+                .catch(error => {
+                    alert("Failed to perform service check: " + error.message);
+                });
+        });
+
+        // AJAX request to perform diagnostic check for an ATM Operator
+        document.getElementById("diagnosticCheckForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            let atmOperatorId = document.getElementById("atmOperatorIdForDiagnosticCheck").value;
+            fetch("/api/atm-operators/" + atmOperatorId + "/diagnostic-check", {
+                method: "POST"
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert("Diagnostic check performed successfully.");
+                    this.reset();
+                })
+                .catch(error => {
+                    alert("Failed to perform diagnostic check: " + error.message);
+                });
+        });
+    </script>
+</body>
+
+</html>
