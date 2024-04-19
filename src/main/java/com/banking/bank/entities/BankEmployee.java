@@ -19,7 +19,7 @@ public class BankEmployee {
     public String name;
     public String empID;
     public String address;
-    public int contact;
+    public String contact;
     public int salary;
 
     // @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
