@@ -1,47 +1,113 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>
-        Bank Management
-    </title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <style>
+        body {
+            background-color: #f7fafc; /* Light gray background color */
+        }
+
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Place behind other elements */
+            opacity: 0.3; /* Adjust opacity as needed */
+            pointer-events: none; /* Prevent interaction with the image */
+        }
+
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-container:hover {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-container:focus-within {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="password"],
+        .form-container select {
+            transition: box-shadow 0.3s ease;
+        }
+
+        .form-container input[type="text"]:focus,
+        .form-container input[type="password"]:focus,
+        .form-container select:focus {
+            box-shadow: 0 0 10px rgba(0, 0, 255, 0.5);
+        }
+
+        .form-container button[type="reset"] {
+            transition: background-color 0.3s ease;
+        }
+
+        .form-container button[type="reset"]:hover {
+            background-color: #4a5568;
+        }
+
+        .form-container button[type="reset"]:focus {
+            box-shadow: 0 0 10px rgba(0, 0, 255, 0.5);
+        }
+    </style>
 </head>
 
-<body class="flex flex-col w-full h-full">
-    <div>
-        <div class="font-bold text-3xl text-center items-center m-4">Bank Management System</div>
-        <div class="font-semibold text-xl text-center items-center">PES1UG21CS086, PES1UG21CS087, PES1UG21CS092,
-            PES1UG21CS095</div>
+<body class="bg-gray-100 font-sans relative">
+
+    <!-- Background Image -->
+    <img class="background-image" src="banks.jpeg" alt="Background Image">
+
+    <!-- Login Section -->
+    <div class="container mx-auto max-w-md py-12">
+        <div class="form-container bg-white shadow-md rounded px-8 py-10">
+            <h1 class="text-3xl font-bold mb-6 text-center">Bank Management System</h1>
+
+            <!-- Form -->
+            <form action="bank.html" method="post">
+                <div class="mb-4">
+                    <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
+                    <input type="text" id="name" name="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
+
+                <div class="mb-4">
+                    <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password:</label>
+                    <input type="password" id="password" name="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
+
+                <div class="mb-4">
+                    <label for="confirmPassword" class="block text-gray-700 text-sm font-bold mb-2">Confirm Password:</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
+
+                <div class="mb-4">
+                    <label for="accountType" class="block text-gray-700 text-sm font-bold mb-2">Account Type:</label>
+                    <select id="accountType" name="accountType" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        <option value="savings">Savings</option>
+                        <option value="loan">Loan</option>
+                        <option value="current">Current</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <a href="account.html" class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">
+                        Sign Up
+                    </a>
+                    <button type="reset" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        Clear
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
 
-    <div class="flex gap-2 pt-6 justify-center w-full">
-        <a href="bank.html" class="bg-blue-500 hover:bg-blue-700 py-2 px-4 rounded-md">
-            Bank.html
-        </a>
-        <a href="ATMoperator.html" class="bg-blue-500 hover:bg-blue-700 py-2 px-4 rounded-md">
-            ATMoperator.html
-        </a>
-        <a href="account.html" class="bg-blue-500 hover:bg-blue-700 py-2 px-4 rounded-md">
-            account.html
-        </a>
-        <a href="employee.html" class="bg-blue-500 hover:bg-blue-700 py-2 px-4 rounded-md">
-            employee.html
-        </a>
-        <a href="/" class="bg-blue-500 hover:bg-blue-700 py-2 px-4 rounded-md">
-            Home
-        </a>
-    </div>
 </body>
-
-<script src="https://cdn.tailwindcss.com"></script>
 
 </html>

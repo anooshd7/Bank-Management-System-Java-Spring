@@ -8,16 +8,18 @@
 
 <body class="flex flex-col w-full h-screen text-center">
     <div class="font-bold text-2xl mt-4">Transaction History Management</div>
-    <div class="flex flex-col w-full h-full text-center items-center justify-center">
-        <div class="font-semibold text-xl">Get Transaction History</div>
-        <form id="getTransactionHistoryForm" class="gap-2 flex flex-col justify-center items-center text-center mb-4 border-black p-2">
-            <div class="flex gap-2">
-                <label for="accountNumber">Account Number:</label>
-                <input type="text" id="accountNumber" name="accountNumber" class="border-2 border-black rounded-md">
-            </div>
-            <button type="submit" class="bg-blue-500 p-2 rounded-md w-fit">Get Transaction History</button>
-        </form>
-        <div id="transactionHistoryContainer" class="w-full max-w-md"></div>
+    <div class="flex justify-center space-x-8 mt-8">
+        <div class="w-1/2 bg-gray-100 border border-gray-300 rounded-lg">
+            <div class="font-semibold text-xl mb-4 bg-gray-200 rounded-t-lg">Get Transaction History</div>
+            <form id="getTransactionHistoryForm" class="gap-2 flex flex-col items-center p-4">
+                <div class="flex gap-2">
+                    <label for="accountNumber">Account Number:</label>
+                    <input type="text" id="accountNumber" name="accountNumber" class="border-2 border-black rounded-md">
+                </div>
+                <button type="submit" class="bg-blue-500 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline">Get Transaction History</button>
+            </form>
+            <div id="transactionHistoryContainer" class="w-full max-w-md"></div>
+        </div>
     </div>
 
     <script>

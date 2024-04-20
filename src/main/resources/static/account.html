@@ -6,84 +6,87 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="flex flex-col w-full h-full justify-center text-center items-center">
-    <div class="font-bold text-2xl mb-8">Account Management</div>
+<body class="flex flex-col w-full h-full justify-center text-center items-center bg-gray-200">
+    <div class="font-bold text-3xl mb-8">Account Management</div>
 
-
-    <div class="flex flex-col w-fit text-center items-center justify-center">
+    <div class="flex flex-col w-full items-center justify-center mb-8">
         <div class="font-semibold text-xl">Create Account</div>
-        <form id="createAccountForm"
-            class="gap-2 flex flex-col justify-center items-center text-center mb-4 border-black p-2">
+        <form id="createAccountForm" class="gap-2 flex flex-col items-center mb-4 p-4 border rounded bg-white">
             <div class="flex gap-2">
                 <label for="accountHolderName">Account Holder Name:</label>
                 <input type="text" id="accountHolderName" name="accountHolderName" required
-                    class="border-2 border-black rounded-md">
+                    class="border rounded-md py-2 px-3">
             </div>
             <div class="flex gap-2">
                 <label for="balance">Initial Balance:</label>
-                <input type="number" id="balance" name="balance" required class="border-2 border-black rounded-md">
+                <input type="number" id="balance" name="balance" required class="border rounded-md py-2 px-3">
             </div>
-            <button type="submit" class="bg-blue-500 p-2 rounded-md w-fit">Create Account</button>
+            <button type="submit"
+                class="bg-blue-500 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline">
+                Create Account
+            </button>
         </form>
     </div>
 
-    <div class="border-2 border-black w-screen">
-    </div>
+    <div class="border-b-2 border-black w-full mb-8"></div>
 
-    <div class="flex flex-col w-fit text-center items-center justify-center">
+    <div class="flex flex-col w-full items-center justify-center mb-8">
         <div class="font-semibold text-xl">Deposit</div>
-        <form id="depositForm"
-            class="gap-2 flex flex-col justify-center items-center text-center mb-4 border-black p-2">
+        <form id="depositForm" class="gap-2 flex flex-col items-center mb-4 p-4 border rounded bg-white">
             <div class="flex gap-2">
                 <label for="depositId">Account ID:</label>
-                <input type="number" id="depositId" name="depositId" required class="border-2 border-black rounded-md">
+                <input type="number" id="depositId" name="depositId" required class="border rounded-md py-2 px-3">
             </div>
             <div class="flex gap-2">
                 <label for="depositAmount">Amount:</label>
                 <input type="number" id="depositAmount" name="depositAmount" required
-                    class="border-2 border-black rounded-md">
+                    class="border rounded-md py-2 px-3">
             </div>
-            <button type="submit" class="bg-blue-500 py-2 px-4 rounded-md w-fit">Deposit</button>
+            <button type="submit"
+                class="bg-blue-500 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline">
+                Deposit
+            </button>
         </form>
     </div>
 
-    <div class="border-2 border-black w-screen">
-    </div>
+    <div class="border-b-2 border-black w-full mb-8"></div>
 
-    <div class="flex flex-col w-fit text-center items-center justify-center">
+    <div class="flex flex-col w-full items-center justify-center mb-8">
         <div class="font-semibold text-xl">Withdraw</div>
-        <form id="withdrawForm"
-            class="gap-2 flex flex-col justify-center items-center text-center mb-4 border-black p-2">
+        <form id="withdrawForm" class="gap-2 flex flex-col items-center mb-4 p-4 border rounded bg-white">
             <div class="flex gap-2">
                 <label for="withdrawId">Account ID:</label>
-                <input type="number" id="withdrawId" name="withdrawId" required
-                    class="border-2 border-black rounded-md">
+                <input type="number" id="withdrawId" name="withdrawId" required class="border rounded-md py-2 px-3">
             </div>
             <div class="flex gap-2">
                 <label for="withdrawAmount">Amount:</label>
                 <input type="number" id="withdrawAmount" name="withdrawAmount" required
-                    class="border-2 border-black rounded-md">
+                    class="border rounded-md py-2 px-3">
             </div>
-            <button type="submit" class="bg-blue-500 py-2 px-4 rounded-md w-fit">Withdraw</button>
+            <button type="submit"
+                class="bg-blue-500 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline">
+                Withdraw
+            </button>
         </form>
     </div>
 
-    <div class="border-2 border-black w-screen">
-    </div>
+    <div class="border-b-2 border-black w-full mb-8"></div>
 
-    <div class="flex flex-col w-fit text-center items-center justify-center">
+    <div class="flex flex-col w-full items-center justify-center mb-8">
         <div class="font-semibold text-xl">Check Balance</div>
-        <form id="getAccountForm"
-            class="gap-2 flex flex-col justify-center items-center text-center mb-4 border-black p-2">
+        <form id="getAccountForm" class="gap-2 flex flex-col items-center mb-4 p-4 border rounded bg-white">
             <div class="flex gap-2">
                 <label for="accountId">Account ID:</label>
-                <input type="number" id="accountId" name="accountId" required class="border-2 border-black rounded-md">
+                <input type="number" id="accountId" name="accountId" required class="border rounded-md py-2 px-3">
             </div>
-            <button type="submit" class="bg-blue-500 py-2 px-4 rounded-md w-fit">Check Balance</button>
+            <button type="submit"
+                class="bg-blue-500 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline">
+                Check Balance
+            </button>
         </form>
     </div>
 
-    <div id="accountDetails"></div>
+    <div id="accountDetails" class="font-semibold text-left px-4"></div>
 
     <script>
         // AJAX request to create an account
