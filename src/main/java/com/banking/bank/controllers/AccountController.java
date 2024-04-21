@@ -72,13 +72,27 @@ public class AccountController {
         return accountService.checkBalance(username);
     }
 
+    // @PostMapping("/login")
+    // public ResponseEntity<String> login(@RequestParam String username, @RequestParam String password) {
+    //     boolean isValid = accountService.validateLogin(username, password);
+    //     if (isValid) {
+    //         return ResponseEntity.ok().build();
+    //     } else {
+    //         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
+    //     }
+    // }
+
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestParam String username, @RequestParam String password) {
+    public ResponseEntity<String> login(@RequestBody Map<String, String> request) {
+        String username = request.get("username");
+        String password = request.get("password");
         boolean isValid = accountService.validateLogin(username, password);
         if (isValid) {
             return ResponseEntity.ok().build();
-        } else {
+        }
+        else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
         }
-    }
+}
+
 }

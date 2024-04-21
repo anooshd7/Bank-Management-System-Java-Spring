@@ -70,7 +70,7 @@
         <h1 class="text-3xl font-bold mb-6 text-center">Bank Management System</h1>
         <h2 class="text-xl font-bold mb-6 text-center">Existing Customer Login</h2>
         <!-- Form -->
-        <form id ="loginForm" action="bank.html" method="post">
+        <form id ="loginForm" method="post">
             
             <div class="mb-4">
                 <label for="username" class="block text-gray-700 text-sm font-bold mb-2">Username:</label>
@@ -97,6 +97,11 @@
         let formData = new FormData(this);
         let username = formData.get("username");
         let password = formData.get("password");
+
+        if (!username || !password) {
+            alert("Please enter both username and password");
+            return;
+        }
     
         fetch("/api/accounts/login", {
             method: "POST",
@@ -111,6 +116,7 @@
                 alert("Login successful");
                 window.location.href = "account.html";
             } else {
+                console.log(response)
                 alert("Login failed: " + response.statusText);
             }
         })
