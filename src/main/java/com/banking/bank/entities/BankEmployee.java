@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-//import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Getter
@@ -17,7 +16,6 @@ public class BankEmployee {
     public Long id;
 
     public String name;
-    public String empID;
     public String address;
     public String contact;
     public int salary;
@@ -29,8 +27,4 @@ public class BankEmployee {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "branch_id")
     private Branch branch;
-
-    public void verifyTransaction() {
-        // Implement transaction verification logic
-    }
 }

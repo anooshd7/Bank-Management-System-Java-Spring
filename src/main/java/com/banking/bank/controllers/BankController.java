@@ -32,7 +32,6 @@ public class BankController {
         return ResponseEntity.ok().body(bank);
     }
 
-
     @GetMapping
     public List<Bank> getAllBanks() {
         return bankService.getAllBanks();

@@ -36,8 +36,4 @@ public class Branch {
     public void close() {
         System.out.println("Branch closed: " + name);
     }
-
-    public void manageEmployees() {
-        // Implement employee management logic
-    }
 }
