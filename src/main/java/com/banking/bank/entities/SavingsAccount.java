@@ -12,6 +12,6 @@ import lombok.Setter;
 @DiscriminatorValue("savings")
 public class SavingsAccount extends Account {
 
-    private double interestRate;
+    public double interestRate;
 
 }

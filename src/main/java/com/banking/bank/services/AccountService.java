@@ -82,4 +82,17 @@ public class AccountService {
         Optional<Account> account = accountRepository.findByUsernameAndPassword(username, password);
         return account.isPresent();
     }
+
+    public void changePIN(String username, String newPIN) {
+        Account account = accountRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("Account not found"));
+
+        if (newPIN.length() != 4) {
+            throw new IllegalArgumentException("PIN must be 4 digits long");
+        }
+
+        // Update the PIN
+        account.setPIN(newPIN);
+        accountRepository.save(account);
+    }
 }

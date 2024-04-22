@@ -72,15 +72,18 @@ public class AccountController {
         return accountService.checkBalance(username);
     }
 
-    // @PostMapping("/login")
-    // public ResponseEntity<String> login(@RequestParam String username, @RequestParam String password) {
-    //     boolean isValid = accountService.validateLogin(username, password);
-    //     if (isValid) {
-    //         return ResponseEntity.ok().build();
-    //     } else {
-    //         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
-    //     }
-    // }
+    @PostMapping("/{username}/changePIN")
+    public ResponseEntity<String> changePIN(@PathVariable String username, @RequestBody Map<String, String> request) {
+        String newPIN = request.get("newPIN");
+        try {
+            accountService.changePIN(username, newPIN);
+            return ResponseEntity.ok().body("PIN changed successfully");
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to change PIN");
+        }
+    }
 
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody Map<String, String> request) {

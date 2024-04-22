@@ -20,9 +20,6 @@ public class BankEmployee {
     public String contact;
     public int salary;
 
-    // @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
-    // private List<Account> accounts;
-
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "branch_id")

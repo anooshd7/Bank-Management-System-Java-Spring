@@ -11,5 +11,5 @@ import lombok.Setter;
 @Entity
 @DiscriminatorValue("loan")
 public class LoanAccount extends Account {
-
+    public double loanAmount;
 }

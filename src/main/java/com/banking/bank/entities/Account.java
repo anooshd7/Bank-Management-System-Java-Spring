@@ -20,10 +20,16 @@ public abstract class Account {
 
     @Column(unique = true)
     private String username;
-
     private String password;
-    private String accountHolderName;
-    private double balance;
+
+    public String accountHolderName;
+    public double balance;
+
+    @Column(length = 4)
+    private String PIN;
+    
+    public String address;
+    public String contact;
 
     public double getBalance() {
         return balance;

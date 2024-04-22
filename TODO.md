@@ -3,9 +3,9 @@
 Account (3 types) - DONE
 ATM Backend
 Login and Signup with local storage(username) - DONE
-Role based access
 Make username unique - DONE
 Employee Login and Signup
-Home Page
-Top bar to navigate
+Home Page - DONE
 Loan account
+Connect all entities
+Change PIN
