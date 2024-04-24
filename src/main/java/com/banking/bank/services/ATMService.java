@@ -22,13 +22,16 @@ public class ATMService {
         return account.getBalance();
     }
 
-    public Account deposit(String username, double amount, String atmId) {
+    public Account deposit(String username, double amount, Long atmId) {
         Account account = accountRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("Account not found"));
-
-        Optional<ATM> optionalATM = atmRepository.findById(Long.valueOf(atmId));
+    
+        Optional<ATM> optionalATM = atmRepository.findById(atmId);
         if (optionalATM.isPresent()) {
             ATM atm = optionalATM.get();
+            if (atm.getCashLeft() < amount) {
+                throw new RuntimeException("ATM does not have enough cash");
+            }
             // Perform deposit operation
             account.setBalance(account.getBalance() + amount);
             atm.setCashLeft(atm.getCashLeft() - amount);
@@ -38,31 +41,35 @@ public class ATMService {
             throw new RuntimeException("ATM not found");
         }
     }
+    
 
-    public Account withdraw(String atmId, String username, double amount) {
-        Optional<ATM> optionalATM = atmRepository.findById(Long.valueOf(atmId));
-
+    public Account withdraw(String username, double amount, Long atmId) {
+        Account account = accountRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("Account not found"));
+    
+        Optional<ATM> optionalATM = atmRepository.findById(atmId);
+    
         if (optionalATM.isPresent()) {
             ATM atm = optionalATM.get();
-
-            Account account = accountRepository.findByUsername(username)
-                    .orElseThrow(() -> new RuntimeException("Account not found"));
-
-            if (account.getBalance() < amount) {
+            if (atm.getCashLeft() < amount) {
+                throw new RuntimeException("ATM does not have enough cash");
+            }
+    
+            // Perform withdraw operation
+            double newBalance = account.getBalance() - amount;
+            if (newBalance < 0) {
                 throw new RuntimeException("Insufficient funds");
             }
-
-            double newBalance = account.getBalance() - amount;
+    
             account.setBalance(newBalance);
-
             atm.setCashLeft(atm.getCashLeft() + amount);
-            atmRepository.save(atm); // Save the updated ATM
-
+            atmRepository.save(atm);
             return accountRepository.save(account);
         } else {
             throw new RuntimeException("ATM not found");
         }
     }
+    
 
     public boolean validateLogin(String username, String password) {
         Optional<Account> account = accountRepository.findByUsernameAndPassword(username, password);

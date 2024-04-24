@@ -14,7 +14,15 @@ public class ATM {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     // Make ID, cashLeft
-    private String id;
+    private Long id;
     private double cashLeft;
     public boolean status;
+
+    // public double getcashLeft() {
+    //     return cashLeft;
+    // }
+
+    // public void setcashLeft(double cashLeft) {
+    //     this.cashLeft = cashLeft;
+    // }
 }
