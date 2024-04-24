@@ -10,6 +10,6 @@ import org.springframework.data.jpa.repository.Query;
 public interface ATMRepository extends JpaRepository<ATM, Long> {
     // Use custom query to find ATM by ID
     @Query("SELECT a FROM ATM a WHERE a.id = ?1")
-    ATM findATMById(String id);
+    ATM findATMById(Long id);
 
 }

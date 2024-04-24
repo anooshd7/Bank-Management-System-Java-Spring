@@ -21,29 +21,31 @@
         if (!username) {
             alert("Username not found in local storage.");
         }
-    const deposit = document.querySelector('.withdraw');
-    deposit.addEventListener('click', () => {
-        const amount = document.querySelector('.amount-input').value;
-        if (amount < 100) {
-            alert("Minimum deposit amount is INR 100.");
-            return;
-        }
-        fetch('/api/atm/deposit', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ username: username, amount: amount , atm: atm})
-        }).then(response => {
-            return response.json();
-        }).then(data => {
-            alert(data.message);
-            window.location.href = '/atm.html';
-        });
-    });
-    const back = document.querySelector('.back');
-    back.addEventListener('click', () => {
+        const deposit = document.querySelector('.withdraw');
+deposit.addEventListener('click', () => {
+    const amount = document.querySelector('.amount-input').value;
+    if (amount < 100) {
+        alert("Minimum deposit amount is INR 100.");
+        return;
+    }
+    fetch(`/api/atm/deposit?amount=${amount}&atm=${atm}`, { // Pass amount and atm as query parameters
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username: username })
+    }).then(response => {
+        return response.json();
+    }).then(data => {
+        alert(data.message);
         window.location.href = '/atm.html';
     });
+});
+
+const back = document.querySelector('.back');
+back.addEventListener('click', () => {
+    window.location.href = '/atm.html';
+});
+
 </script>
 </html>

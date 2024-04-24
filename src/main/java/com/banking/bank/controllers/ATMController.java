@@ -26,7 +26,7 @@ public class ATMController {
 
     @PostMapping("/deposit")
     public Account depositMoney(@RequestBody String username, @RequestParam int amount, @RequestParam String atm) {
-        return atmService.deposit(atm, username, amount);
+        return atmService.deposit(username, amount, atm);
 
     }
 
