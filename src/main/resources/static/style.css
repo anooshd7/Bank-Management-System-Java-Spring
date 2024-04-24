@@ -1,0 +1,100 @@
+.ATM{
+    background-image: url("https://i.imgur.com/tCVbwdh.png");
+    width: 100vw;
+    height:100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.welcome-text{
+    color: white;
+    z-index: 1000;
+    margin-left: 430px;
+    padding-top: 175px;
+    font-weight: bolder;
+}
+
+.amount-text{
+    color: white;
+    z-index: 1000;
+    position: relative;
+    margin-top: 20px;
+    margin-left: 490px;
+    font-weight: bolder;
+}
+
+.amount-input{
+    background-color: white;
+    width: 200px;
+    border: none;
+    margin-left: 510px;
+    position: absolute;
+}
+
+.withdraw{
+    border-radius: 5px;
+    padding: 5px;
+    color: black;
+    background-color: white;
+    width: 130px;
+    position: absolute;
+    margin-top: 140px;
+    margin-left: 700px;
+}
+
+.back{
+    border-radius: 5px;
+    padding: 5px;
+    color: black;
+    background-color: white;
+    width: 130px;
+    position: absolute;
+    margin-top: 180px;
+    margin-left: 700px;
+}
+
+.deposit-text{
+    color: rgba(255, 255, 255, 0);
+    z-index: 1000;
+    margin-left: 430px;
+    padding-top: 175px;
+    font-weight: bolder;
+    
+}
+
+.balance-text{
+    color: rgba(255, 255, 255, 0);
+    z-index: 1000;
+    margin-left: 430px;
+    padding-top: 135px;
+    font-weight: bolder;
+}
+.pin-text{
+    color: white;
+    z-index: 1000;
+    position: relative;
+    margin-top: 20px;
+    margin-left: 450px;
+    font-weight: bolder;
+}
+
+.pin-input{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.pin-input-box{
+    width: 150px;
+    height: 20px;
+}
+
+.pin-back{
+    border-radius: 5px;
+    padding: 5px;
+    color: black;
+    background-color: white;
+    width: 130px;
+    position: absolute;
+    margin-top: 110px;
+    margin-left: 700px;
+}

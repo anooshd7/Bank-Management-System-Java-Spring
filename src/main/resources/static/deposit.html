@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="ATM">
+        <p class="deposit-text">MAXIMUM DEPOSIT AMOUNT IS INR 10,000</p>
+        <p class="amount-text">PLEASE ENTER YOUR AMOUNT</p>
+        <input class="amount-input" type="number" max="10000" min="100"/>
+        <button class="withdraw">DEPOSIT</button>
+        <button class="back">BACK</button>
+    </div>
+</body>
+<script>
+    let username = localStorage.getItem("username");
+    let atm = localStorage.getItem("atm");
+        if (!username) {
+            alert("Username not found in local storage.");
+        }
+    const deposit = document.querySelector('.withdraw');
+    deposit.addEventListener('click', () => {
+        const amount = document.querySelector('.amount-input').value;
+        if (amount < 100) {
+            alert("Minimum deposit amount is INR 100.");
+            return;
+        }
+        fetch('/api/atm/deposit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username: username, amount: amount , atm: atm})
+        }).then(response => {
+            return response.json();
+        }).then(data => {
+            alert(data.message);
+            window.location.href = '/atm.html';
+        });
+    });
+    const back = document.querySelector('.back');
+    back.addEventListener('click', () => {
+        window.location.href = '/atm.html';
+    });
+</script>
+</html>

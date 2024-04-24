@@ -1,0 +1,37 @@
+.ATM {
+    background-image: url("https://i.imgur.com/tCVbwdh.png");
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Right-side Buttons */
+.right-buttons {
+    position: absolute;
+    top:43.75%;
+    right: 44%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 130px;
+    padding: 5px;
+    
+  }
+  
+  /* Left-side Buttons */
+  .left-buttons {
+    position: absolute;
+    top: 38%;
+    left: 27%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 130px;
+    padding: 20px;
+  }
