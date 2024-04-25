@@ -8,7 +8,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 public interface AccountRepository extends JpaRepository<Account, Long> {
+    @Query("SELECT a FROM Account a WHERE a.username = :username")
     Optional<Account> findByUsername(String username);
+
     boolean existsByUsername(String username);
 
     @Query("SELECT a FROM Account a WHERE a.username = :username AND a.password = :password")

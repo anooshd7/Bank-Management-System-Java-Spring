@@ -8,8 +8,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 public interface ATMRepository extends JpaRepository<ATM, Long> {
-    // Use custom query to find ATM by ID
+    // findByID
     @Query("SELECT a FROM ATM a WHERE a.id = ?1")
-    ATM findATMById(Long id);
+    Optional<ATM> findByID(Long id);
 
 }

@@ -21,29 +21,31 @@ public class ATMController {
     }
 
     @PostMapping("/{username}/deposit")
-    public Account depositMoney(@PathVariable String username, @RequestBody Map<String, Double> request, @RequestParam Long atm) {
+    public Account depositMoney(@PathVariable String username, @RequestBody Map<String, Double> request,
+            @RequestParam Long atm) {
         Double amount = request.get("amount");
         return atmService.deposit(username, amount, atm);
     }
 
     @PostMapping("/{username}/withdraw")
-    public Account withdrawMoney(@PathVariable String username, @RequestBody Map<String, Double> request, @RequestParam Long atm) {
+    public Account withdrawMoney(@PathVariable String username, @RequestBody Map<String, Double> request,
+            @RequestParam Long atm) {
         Double amount = request.get("amount");
         return atmService.withdraw(username, amount, atm);
     }
 
-    @PostMapping("/checkBalance")
+    @PostMapping("/{username}/checkBalance")
     public double checkBalance(@RequestBody String username) {
         return atmService.checkBalance(username);
     }
 
-    @PostMapping("/changePIN")
-    public void changePIN(@RequestBody String username, @RequestParam String newPIN) {
-        atmService.changePIN(username, newPIN);
+    @PostMapping("/{username}/changePIN")
+    public Account changePIN(@RequestBody String username, @RequestParam String pin) {
+        return atmService.changePIN(username, pin);
     }
 
     @PostMapping("/validatePIN")
-    public boolean validatePIN(@RequestBody String username, @RequestParam String PIN) {
-        return atmService.validatePIN(username, PIN);
+    public boolean validatePIN(@RequestBody String username, @RequestParam String pin) {
+        return atmService.validatePIN(username, pin);
     }
 }

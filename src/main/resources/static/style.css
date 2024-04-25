@@ -33,7 +33,6 @@
 
 .withdraw{
     border-radius: 5px;
-    padding: 5px;
     color: black;
     background-color: white;
     width: 130px;
@@ -42,9 +41,18 @@
     margin-left: 700px;
 }
 
+.val-back{
+    border-radius: 5px;
+    color: black;
+    background-color: white;
+    width: 130px;
+    position: absolute;
+    margin-top: 100px;
+    margin-left: 700px;
+}
+
 .back{
     border-radius: 5px;
-    padding: 5px;
     color: black;
     background-color: white;
     width: 130px;
@@ -86,15 +94,35 @@
 .pin-input-box{
     width: 150px;
     height: 20px;
+    margin-top: 20px;
 }
 
 .pin-back{
     border-radius: 5px;
-    padding: 5px;
     color: black;
     background-color: white;
     width: 130px;
     position: absolute;
-    margin-top: 110px;
+    margin-top: 140px;
     margin-left: 700px;
+}
+
+.pin-change{
+    border-radius: 5px;
+    color: black;
+    background-color: white;
+    width: 130px;
+    position: absolute;
+    margin-top: 90px;
+    margin-left: 700px;
+}
+
+button:hover{
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+
+.pin-div{
+    margin-top: 70px;
 }
