@@ -77,7 +77,7 @@ public class ATMService {
 
     public boolean validatePIN(String username, String PIN) {
         Account account = accountRepository.findByUsername(username)
-                .orElseThrow(() -> new RuntimeEsxsdxsssdxdscxxception("Account not found"));
+                .orElseThrow(() -> new RuntimeException("Account not found"));
         return account.getPIN().equals(PIN);
     }
 
